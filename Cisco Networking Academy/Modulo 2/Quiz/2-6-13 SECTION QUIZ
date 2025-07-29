@@ -1,0 +1,29 @@
+## 2.6.13 CUESTIONARIO DE LA SECCIÓN: FUNCIONES print() E input()
+
+### ❓ Pregunta 1: ¿Cuál es la salida del siguiente fragmento de código?
+
+```python
+x = int(input("Ingresa un número: "))  # El usuario ingresa 2
+print(x * "5")
+```
+
+**Respuesta correcta:** `55`
+
+**Explicación:**  
+Aunque `x` es un número entero (`2`), `"5"` es una cadena de texto. En Python, **multiplicar un string por un entero** genera una repetición del string. Por lo tanto, `"5" * 2` produce `"55"`.
+
+---
+
+### ❓ Pregunta 2: ¿Cuál es la salida esperada del siguiente fragmento?
+
+```python
+x = input("Ingresa un número: ")  # El usuario ingresa 2
+print(type(x))
+```
+
+**Respuesta correcta:** `<class 'str'>`
+
+**Explicación:**  
+La función `input()` **siempre devuelve una cadena de texto**, sin importar si el usuario ingresa un número. Para convertirlo a entero se requiere `int()`. En este caso, `x` sigue siendo tipo `str`.
+
+---
