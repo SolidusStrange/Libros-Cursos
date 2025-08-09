@@ -19,3 +19,13 @@ def is_a_triange(a, b, c):
 
 print(is_a_triangle(1, 1, 1))
 print(is_a_triangle(1, 1, 3))
+print()
+
+#más aun
+
+def is_a_triangle(a, b, c):
+    return a + b > c and b + c > a and c + a > b
+  
+print(is_a_triangle(1, 1, 1))
+print(is_a_triangle(1, 1, 3))
+ 
