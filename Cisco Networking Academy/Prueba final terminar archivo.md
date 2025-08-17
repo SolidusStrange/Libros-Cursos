@@ -140,3 +140,407 @@ print(fun(my_list))
 
 **Respuesta:** `[0, 1, 9, 16]`\
 **Justificación:** Se elimina el índice 4 (valor 16).
+
+## Pregunta 11
+**Enunciado:**
+```python
+x = 1
+y = 2
+x, y, z = x, x, y
+z, y, z = x, y, z
+
+print(x, y, z)
+```
+**Alternativas:**
+- A) `1 2 1`
+- B) `1 1 2`
+- C) `1 2 2`
+- D) `2 1 2`
+
+**Respuesta correcta:** B) `1 1 2`  
+**Justificación:**  
+Tras `x, y, z = 1, 1, 2`. Luego `z, y, z = 1, 1, 2` (evaluado primero el RHS); las asignaciones son izquierda→derecha, por lo que `z` termina en `2`.
+
+---
+
+## Pregunta 12
+**Enunciado:**
+```python
+a = 1
+b = 0
+a = a ^ b
+b = a ^ b
+a = a ^ b
+
+print(a, b)
+```
+**Alternativas:**
+- A) `0 0`
+- B) `0 1`
+- C) `1 0`
+- D) `1 1`
+
+**Respuesta correcta:** B) `0 1`  
+**Justificación:**  
+Operador XOR para intercambio: el resultado final es `a=0`, `b=1`.
+
+---
+
+## Pregunta 13
+**Enunciado:**
+```python
+def fun(x):
+    if x % 2 == 0:
+        return 1
+    else:
+        return 2
+
+print(fun(fun(2)))
+```
+**Alternativas:**
+- A) `None`
+- B) `1`
+- C) *error de ejecución*
+- D) `2`
+
+**Respuesta correcta:** D) `2`  
+**Justificación:**  
+`fun(2) → 1` (par), luego `fun(1) → 2` (impar).
+
+---
+
+## Pregunta 14
+**Enunciado:**
+```python
+nums = [1, 2, 3]
+vals = nums
+del vals[:]
+```
+**Alternativas:**
+- A) *error de ejecución*
+- B) `nums` y `vals` tienen la misma longitud
+- C) `vals` es más larga que `nums`
+- D) `nums` es más larga que `vals`
+
+**Respuesta correcta:** B) `nums` y `vals` tienen la misma longitud  
+**Justificación:**  
+`vals` y `nums` referencian **la misma lista**; rebanado vacío la deja con longitud `0` en ambas.
+
+---
+
+## Pregunta 15
+**Enunciado:** (entradas: `3` y `2`)
+```python
+x = int(input())
+y = int(input())
+x = x % y
+x = x % y
+y = y % x
+print(y)
+```
+**Alternativas:**
+- A) `1`
+- B) `2`
+- C) `3`
+- D) `0`
+
+**Respuesta correcta:** D) `0`  
+**Justificación:**  
+`x=3%2=1`, luego `x=1%2=1`, luego `y=2%1=0`.
+
+---
+
+## Pregunta 16
+**Enunciado:** (entradas: `3` y `6`)
+```python
+y = input()
+x = input()
+print(x + y)
+```
+**Alternativas:**
+- A) `36`
+- B) `6`
+- C) `3`
+- D) `63`
+
+**Respuesta correcta:** D) `63`  
+**Justificación:**  
+Entrada como **cadenas**: `"6" + "3" = "63"`.
+
+---
+
+## Pregunta 17
+**Enunciado:**
+```python
+print("a", "b", "c", sep="sep")
+```
+**Alternativas:**
+- A) `asepbsepcsep`
+- B) `a b c`
+- C) `abc`
+- D) `asepbsepc`
+
+**Respuesta correcta:** D) `asepbsepc`  
+**Justificación:**  
+`sep="sep"` inserta `sep` **entre** los argumentos (no al final).
+
+---
+
+## Pregunta 18
+**Enunciado:**
+```python
+x = 1 // 5 + 1 / 5
+print(x)
+```
+**Alternativas:**
+- A) `0`
+- B) `0.5`
+- C) `0.4`
+- D) `0.2`
+
+**Respuesta correcta:** D) `0.2`  
+**Justificación:**  
+`1//5 = 0`, `1/5 = 0.2`, suma `0.2`.
+
+---
+
+## Pregunta 19
+**Enunciado:**
+```python
+my_tuple[1] = my_tuple[1] + my_tuple[0]
+```
+**Alternativas:**
+- A) puede ser ilegal si la tupla contiene cadenas
+- B) es ilegal
+- C) es completamente correcta
+- D) se puede ejecutar solo si la tupla contiene al menos dos elementos
+
+**Respuesta correcta:** B) es ilegal  
+**Justificación:**  
+Las tuplas son **inmutables**: no se puede asignar a un índice.
+
+---
+
+## Pregunta 20
+**Enunciado:** (entradas: `2` y `4`)
+```python
+x = float(input())
+y = float(input())
+print(y ** (1 / x))
+```
+**Alternativas:**
+- A) `1.0`
+- B) `0.0`
+- C) `2.0`
+- D) `4.2`
+
+**Respuesta correcta:** C) `2.0`  
+**Justificación:**  
+`4 ** (1/2) = √4 = 2.0`.
+
+---
+
+## Pregunta 21
+**Enunciado:**
+```python
+dct = {'one': 'two', 'three': 'one', 'two': 'three'}
+v = dct['three']
+
+for k in range(len(dct)):
+    v = dct[v]
+
+print(v)
+```
+**Alternativas:**
+- A) `('one', 'two', 'three')`
+- B) `two`
+- C) `one`
+- D) `three`
+
+**Respuesta correcta:** C) `one`  
+**Justificación:**  
+Secuencia cíclica: `one → two → three → one` en 3 pasos.
+
+---
+
+## Pregunta 22
+**Enunciado:**
+```python
+lst = [i for i in range(-1, -2)]
+```
+**Alternativas:**
+- A) uno
+- B) cero
+- C) dos
+- D) tres
+
+**Respuesta correcta:** B) cero  
+**Justificación:**  
+`range(-1, -2)` con paso `+1` no produce elementos → lista vacía.
+
+---
+
+## Pregunta 23
+**Enunciado:**
+```python
+def fun(a, b, c=0):
+    # cuerpo
+    pass
+```
+**Alternativas (elige dos correctas):**
+- A) `fun(0, 1, 2)`
+- B) `fun(b=0, a=0)`
+- C) `fun(b=1)`
+- D) `fun()`
+
+**Respuesta correcta:** A) y B)  
+**Justificación:**  
+A) provee los tres parámetros posicionalmente; B) usa palabras clave para `a` y `b`, dejando `c` por defecto. C) falta `a`; D) faltan `a` y `b`.
+
+---
+
+## Pregunta 24
+**Enunciado:**
+```python
+def fun(x, y):
+    if x == y:
+        return x
+    else:
+        return fun(x, y-1)
+
+print(fun(0, 3))
+```
+**Alternativas:**
+- A) `1`
+- B) *error de ejecución*
+- C) `2`
+- D) `0`
+
+**Respuesta correcta:** D) `0`  
+**Justificación:**  
+Recursión decrementa `y` hasta `y == x (0)` y retorna `0`.
+
+---
+
+## Pregunta 25
+**Enunciado:**
+```python
+i = 0
+while i < i + 2 :
+    i += 1
+    print("*")
+else:
+    print("*")
+```
+**Alternativas:**
+- A) `1`
+- B) `2`
+- C) *el fragmento entrará en un bucle infinito, imprimiendo un `*` por línea*
+- D) `0`
+
+**Respuesta correcta:** C) bucle infinito  
+**Justificación:**  
+`i < i + 2` es siempre verdadero para enteros, por lo que el `while` no termina.
+
+---
+
+## Pregunta 26
+**Enunciado:**
+```python
+tup = (1, 2, 4, 8)
+tup = tup[-2:-1]
+tup = tup[-1]
+print(tup)
+```
+**Alternativas:**
+- A) `4`
+- B) `(4,)`
+- C) `44`
+- D) `(4)`
+
+**Respuesta correcta:** A) `4`  
+**Justificación:**  
+El corte `tup[-2:-1]` da `(4,)`; luego `tup[-1]` es `4` (entero).
+
+---
+
+## Pregunta 27
+**Enunciado:**
+```python
+dd = {"1": "0", "0": "1"}
+for x in dd.vals():
+    print(x, end="")
+```
+**Alternativas:**
+- A) `1 0`
+- B) `0 0`
+- C) *el código es erróneo (el objeto `dict` no contiene el método `vals()`)*
+- D) `0 1`
+
+**Respuesta correcta:** C) *el código es erróneo…*  
+**Justificación:**  
+El método correcto es `dict.values()`. `vals()` provoca `AttributeError` en tiempo de ejecución.
+
+---
+
+## Pregunta 28
+**Enunciado:**
+```python
+dct = {}
+dct['1'] = (1, 2)
+dct['2'] = (2, 1)
+
+for x in dct.keys():
+    print(dct[x][1], end="")
+```
+**Alternativas:**
+- A) `21`
+- B) `(2,1)`
+- C) `(1,2)`
+- D) `12`
+
+**Respuesta correcta:** A) `21`  
+**Justificación:**  
+Orden de inserción: claves `'1'`, `'2'`. Se imprime el índice `1` de cada tupla: `2` y luego `1` → `21`.
+
+---
+
+## Pregunta 29
+**Enunciado:**
+```python
+def fun(inp=2, out=3):
+    return inp * out
+
+print(fun(out=2))
+```
+**Alternativas:**
+- A) `6`
+- B) `4`
+- C) *error de sintaxis*
+- D) `2`
+
+**Respuesta correcta:** B) `4`  
+**Justificación:**  
+`inp` usa valor por defecto `2`; `out=2` → `2*2=4`.
+
+---
+
+## Pregunta 30
+**Enunciado:**
+```python
+lst = [[x for x in range(3)] for y in range(3)]
+
+for r in range(3):
+    for c in range(3):
+        if lst[r][c] % 2 != 0:
+            print("#")
+```
+**Alternativas:**
+- A) tres
+- B) nueve
+- C) seis
+- D) cero
+
+**Respuesta correcta:** A) tres  
+**Justificación:**  
+En cada fila aparece el `1` (impar) una vez → total `3` impresiones.
