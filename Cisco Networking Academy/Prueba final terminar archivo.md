@@ -103,3 +103,40 @@ print(func(b=2, 2))
 Los argumentos posicionales no pueden ir después de los argumentos nombrados en la llamada a la función. Por eso da error de sintaxis.
 
 ... (continuar incluyendo todas las preguntas y explicaciones tal como en el texto original del usuario)
+
+## Pregunta 8
+
+**Código:**
+
+``` python
+z = 0
+y = 10
+x = y < z and z > y or y < z and z < y
+```
+
+**Respuesta:** `False`\
+**Justificación:** Se evalúa como `False or False → False`.
+
+------------------------------------------------------------------------
+
+## Pregunta 9
+
+**Respuesta:** `for` y `in`\
+**Justificación:** Son palabras reservadas en Python.
+
+------------------------------------------------------------------------
+
+## Pregunta 10
+
+**Código:**
+
+``` python
+my_list = [x * x for x in range(5)]
+def fun(lst):
+    del lst[lst[2]]
+    return lst
+print(fun(my_list))
+```
+
+**Respuesta:** `[0, 1, 9, 16]`\
+**Justificación:** Se elimina el índice 4 (valor 16).
