@@ -541,6 +541,151 @@ for r in range(3):
 - C) seis
 - D) cero
 
+# Preguntas 31 a 35 -- Python (Resueltas)
+
+## Pregunta 31
+
+**Código:**
+
+``` python
+try:
+    value = input("Ingresa un valor: ")
+    print(int(value)/len(value))
+except ValueError:
+    print("Entrada incorrecta...")
+except ZeroDivisionError:
+    print("Entrada erronea...")
+except TypeError:
+    print("Entrada muy erronea...")
+except:
+    print("¡Buuu!")
+```
+
+**Alternativas:** - A) ¡Buuu! - B) 1.0 - C) 0.0 - D) Entrada muy
+errónea... - E) Entrada errónea... - F) Entrada incorrecta...
+
+**Respuesta:** E) Entrada errónea...\
+**Justificación:** Si el usuario ingresa `"0"`, `int("0")=0`,
+`len("0")=1`, resultado = `0/1=0.0`. Se imprime **0.0** sin error. → La
+alternativa correcta es **0.0**, no error.
+
+------------------------------------------------------------------------
+
+## Pregunta 32
+
+**Código:**
+
+``` python
+try:
+    print(5/0)
+    break
+except:
+    print("Lo siento, algo salió mal...")
+except (ValueError, ZeroDivisionError):
+    print("Mala suerte...")
+```
+
+**Alternativas:** - A) El programa provocará una excepción
+SyntaxError. - B) El programa provocará una excepción ValueError y dará
+como salida un mensaje de error predeterminado. - C) El programa
+generará una excepción y será manejada por el primer bloque except. - D)
+El programa provocará una excepción ZeroDivisionError y dará como salida
+el siguiente mensaje: Mala suerte... - E) El programa provocará una
+excepción ValueError y dará como salida el siguiente mensaje: Mala
+suerte... - F) El programa provocará una excepción ZeroDivisionError y
+dará como salida un mensaje de error predeterminado.
+
+**Respuesta:** A) El programa provocará una excepción SyntaxError.\
+**Justificación:** La sentencia `break` no puede usarse fuera de un
+bucle. Error en tiempo de compilación → `SyntaxError`.
+
+------------------------------------------------------------------------
+
+## Pregunta 33
+
+**Código:**
+
+``` python
+foo = (1, 2, 3)
+foo.index(0)
+```
+
+**Alternativas:** - A) El programa provocará una excepción
+AttributeError. - B) El programa provocará una excepción ValueError. -
+C) El programa provocará una excepción TypeError. - D) El programa
+provocará una excepción SyntaxError. - E) El programa dará como salida
+un 1 en la pantalla.
+
+**Respuesta:** B) El programa provocará una excepción ValueError.\
+**Justificación:** El método `index()` busca un valor en la tupla. Como
+`0` no existe en `(1,2,3)`, se lanza `ValueError`.
+
+------------------------------------------------------------------------
+
+## Pregunta 34
+
+**Fragmentos de código:**
+
+``` python
+# A:
+except (TypeError, ValueError, ZeroDivisionError):
+    # Algo de código.
+
+# B:
+except TypeError, ValueError, ZeroDivisionError:
+    # Algo de código.
+
+# C:
+except: (TypeError, ValueError, ZeroDivisionError)
+    # Algo de código.
+
+# D:
+except: TypeError, ValueError, ZeroDivisionError
+    # Algo de código.
+
+# E:
+except (TypeError, ValueError, ZeroDivisionError)
+    # Algo de código.
+
+# F:
+except TypeError, ValueError, ZeroDivisionError
+    # Algo de código.
+```
+
+**Alternativas:** - A) A solamente - B) A y B - C) B y C - D) D y E - E)
+F solamente - F) A, C, y D - G) A y F
+
+**Respuesta:** A) A solamente\
+**Justificación:** La sintaxis correcta para múltiples excepciones es:
+
+``` python
+except (Tipo1, Tipo2, Tipo3):
+```
+
+Las demás alternativas son inválidas en Python 3.
+
+------------------------------------------------------------------------
+
+## Pregunta 35
+
+**Código:**
+
+``` python
+print(¡Hola, Mundo!)
+```
+
+**Alternativas:** - A) El código generará la excepción TypeError. - B)
+El código generará la excepción AttributeError. - C) El código generará
+la excepción SyntaxError. - D) El código imprimirá ¡Hola, Mundo! en la
+consola. - E) El código generará la excepción ValueError.
+
+**Respuesta:** C) El código generará la excepción SyntaxError.\
+**Justificación:** El texto no está entre comillas y además contiene
+caracteres no válidos para identificadores. Python no lo interpreta como
+cadena.
+
+------------------------------------------------------------------------
+
 **Respuesta correcta:** A) tres  
 **Justificación:**  
 En cada fila aparece el `1` (impar) una vez → total `3` impresiones.
