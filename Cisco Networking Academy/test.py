@@ -41,24 +41,35 @@ def maquina_movimiento(matriz):
         return True
     return False
 
-def revisar_ganador(matriz):
+def revisar_ganador(matriz, simbolo):
+    # Revisar filas
     for fila in range(3):
-        if all(valor == "X" for valor in matriz[fila]):
-            print(F"Fila {fila+1} completa con X")
+        if all(valor == simbolo for valor in matriz[fila]):
+            print(f"Fila {fila+1} completa con {simbolo}")
+            return True
 
+    # Revisar columnas
     for columna in range(3):
-        if all(matriz[fila][columna] == "X" for fila in range(3)):
-            print(f"Columna {columna+1} completa en X")
-        
-    if all(matriz[i][i] == "X" for i in range(3)): #[0][0], [1][1], [2][2]
-        print("Diagonal principal completa con X")
+        if all(matriz[fila][columna] == simbolo for fila in range(3)):
+            print(f"Columna {columna+1} completa con {simbolo}")
+            return True
 
-    #posiciones [0][2], [1][1], [2][0]
-    if all(matriz[i][2-i] == "X" for i in range(3)):
-        print("Diagonal secundaria completa con X")
+    # Revisar diagonal principal
+    if all(matriz[i][i] == simbolo for i in range(3)):
+        print(f"Diagonal principal completa con {simbolo}")
+        return True
+
+    # Revisar diagonal secundaria
+    if all(matriz[i][2-i] == simbolo for i in range(3)):
+        print(f"Diagonal secundaria completa con {simbolo}")
+        return True
+
+    return False
         
-        
-revisar_ganador(tablero)
+if revisar_ganador(tablero, "X"):
+    print("¡La máquina ganó!")
+elif revisar_ganador(tablero, "O"):
+    print("¡El jugador ganó!")
 
 # while True:
 #     usuario = int(input("Ingrese un movimiento válido: "))
