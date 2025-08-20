@@ -17,26 +17,30 @@ def imprimir_tablero(matriz):
 # imprimir_tablero(tablero)
 
 def movimiento(usuario, matriz):
+    try:
+        usuario = int(usuario)
+    except ValueError:
+        print("Debe ingresar un número válido.")
+        return False
+
     for fila in range(len(matriz)):
         for columna in range(len(matriz[fila])):
             if matriz[fila][columna] == usuario:
-                matriz[fila][columna] = "O" # Si es así, reemplazar por "X" y salir de la función
-                return True # movimiento válido
+                matriz[fila][columna] = "O"
+                return True
 
-    print("El movimiento ingresado no es válido. Intente nuevamente") #Si no fue válido, salta el return y pasa a imprimir este msj
-    return False #Retorna false para el IF que evalua
+    print("El movimiento ingresado no es válido. Intente nuevamente.")
+    return False
 
 def maquina_movimiento(matriz):
-    # maquina = random.choice(tablero)
-    disponibles = [] #Buscar todos los valores que sean números (casillas libres)
+    disponibles = []
     for fila in range(len(matriz)):
         for columna in range(len(matriz[fila])):
-            if isinstance(matriz[fila][columna], int): # solo números libres
+            if isinstance(matriz[fila][columna], int):
                 disponibles.append((fila, columna))
-            
-    #Elegir una posición al azar
-    if disponibles: #disponibles guarda tuplas (fila, columna) de todas las casillas libres.
-        fila, columna = random.choice(disponibles) #elige una de esas posiciones
+
+    if disponibles:
+        fila, columna = random.choice(disponibles)
         matriz[fila][columna] = "X"
         return True
     return False
@@ -65,17 +69,34 @@ def revisar_ganador(matriz, simbolo):
         return True
 
     return False
-        
-if revisar_ganador(tablero, "X"):
-    print("¡La máquina ganó!")
-elif revisar_ganador(tablero, "O"):
-    print("¡El jugador ganó!")
 
-# while True:
-#     usuario = int(input("Ingrese un movimiento válido: "))
-#     if movimiento(usuario, tablero):
-#         imprimir_tablero(tablero)
-#         break
+# --- Bucle principal ---
+while True:
+    imprimir_tablero(tablero)
+
+    # Movimiento jugador
+    usuario = input("Ingrese su movimiento (número de casilla): ")
+    if not movimiento(usuario, tablero):
+        continue  # si no fue válido, vuelve a pedir
+    
+    # Revisar si ganó el jugador
+    if revisar_ganador(tablero, "O"):
+        imprimir_tablero(tablero)
+        print("¡El jugador ganó!")
+        break
+
+    # Movimiento máquina
+    if not maquina_movimiento(tablero):
+        imprimir_tablero(tablero)
+        print("¡Empate!")
+        break
+
+    # Revisar si ganó la máquina
+    if revisar_ganador(tablero, "X"):
+        imprimir_tablero(tablero)
+        print("¡La máquina ganó!")
+        break
+
 
 
 
