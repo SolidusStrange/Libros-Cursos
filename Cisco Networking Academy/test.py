@@ -70,6 +70,13 @@ def revisar_ganador(matriz, simbolo):
 
     return False
 
+def tablero_lleno(matriz):
+    for fila in matriz:
+        for valor in fila:
+            if isinstance(valor, int):  # si aún queda un número
+                return False
+    return True
+
 # --- Bucle principal ---
 while True:
     imprimir_tablero(tablero)
@@ -96,7 +103,12 @@ while True:
         imprimir_tablero(tablero)
         print("¡La máquina ganó!")
         break
-
+    
+    # Revisar empate después del turno del jugador
+    if tablero_lleno(tablero):
+        imprimir_tablero(tablero)
+        print("¡Empate!")
+        break
 
 
 
