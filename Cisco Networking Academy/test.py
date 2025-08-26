@@ -46,36 +46,41 @@ def maquina_movimiento(matriz):
     return False
 
 def revisar_ganador(matriz, simbolo):
-    # Revisar filas
-    for fila in range(3):
-        if all(valor == simbolo for valor in matriz[fila]):
+    for fila in range(3): #Recorre cada fila.
+        temporal = []
+        for valor in matriz[fila]:
+            temporal.append(valor == simbolo) #temporal se llena con True/False dependiendo si cada valor coincide.
+        if all(temporal): #all(temporal) confirma si toda la fila está ocupada por el mismo símbolo.
             print(f"Fila {fila+1} completa con {simbolo}")
             return True
 
-    # Revisar columnas
-    for columna in range(3):
-        if all(matriz[fila][columna] == simbolo for fila in range(3)):
+    for columna in range(len(matriz[0])): #Recorre cada columna y verifica igual que con las filas.
+        temporal = []
+        for valor in range(len(matriz)):
+            temporal.append(matriz[valor][columna] == simbolo)
+        if all(temporal):
             print(f"Columna {columna+1} completa con {simbolo}")
-            return True
+            return 
+        
+    # Diagonal izquierda (0,0) (1,1) (2,2)
+    temporal = []
+    for fila in range(len(matriz)):
+        temporal.append(matriz[fila][fila] == simbolo)
 
-    # Revisar diagonal principal
-    if all(matriz[i][i] == simbolo for i in range(3)):
-        print(f"Diagonal principal completa con {simbolo}")
+    if all(temporal):
+        print(f"Diagonal izquierda completa con {simbolo}")
         return True
 
-    # Revisar diagonal secundaria
-    if all(matriz[i][2-i] == simbolo for i in range(3)):
-        print(f"Diagonal secundaria completa con {simbolo}")
+    # Diagonal derecha (0,2) (1,1) (2,0)
+    temporal = []
+    for fila in range(len(matriz)): #(0.2) (1,1) (2.0)
+        temporal.append(matriz[fila][len(matriz) - fila - 1] == simbolo)
+
+    if all(temporal):
+        print(f"Diagonal derecha completa con {simbolo}")
         return True
 
     return False
-
-def tablero_lleno(matriz):
-    for fila in matriz:
-        for valor in fila:
-            if isinstance(valor, int):  # si aún queda un número
-                return False
-    return True
 
 # --- Bucle principal ---
 while True:
@@ -109,6 +114,7 @@ while True:
         imprimir_tablero(tablero)
         print("¡Empate!")
         break
+
 
 
 
